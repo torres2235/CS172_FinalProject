@@ -19,6 +19,7 @@ Needed:
 - Scrapper
     - BeautifulSoup (?)
         - used to extract links
+- Some way to check robots.txt
 '''
 
 
