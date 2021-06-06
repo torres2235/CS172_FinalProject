@@ -8,4 +8,5 @@
 
 
 ###### Language used, how to run your code, etc
-Using Python 3.7 w/ the requests and BeautifulSoup4 libraries
+Using Python 3.7 w/ the requests, lxml, and BeautifulSoup4 libraries
+  - Be sure to 'pip install' these libraries before running
