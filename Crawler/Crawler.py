@@ -22,4 +22,25 @@ Needed:
 - Some way to check robots.txt
 '''
 
+import re
+import requests # helps get info from webpages
+from bs4 import BeautifulSoup
 
+url_list = []
+with open('../SeedUrls.txt', 'r') as urls:
+    for line in urls:
+        line = re.sub('\n',"", line)
+        url_list.append(str(line))
+urls.close()
+#print(url_list)
+
+source_code = requests.get(url_list[0])
+plain_text = source_code.text
+#print(plain_text)
+
+soup = BeautifulSoup(plain_text, features = "lxml") # be sure 'pip install lxml' 
+for link in soup.findAll('a'): # 'a' is element for links
+    href = link.get('href')
+    title = link.string
+    print(href)
+    print(title)
