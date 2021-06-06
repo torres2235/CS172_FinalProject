@@ -8,3 +8,4 @@
 
 
 ###### Language used, how to run your code, etc
+Using Python 3.7 w/ the requests and BeautifulSoup4 libraries
