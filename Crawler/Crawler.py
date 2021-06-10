@@ -31,7 +31,7 @@ from bs4 import BeautifulSoup
 #---------------------Globals-------------------#
 url_list = []
 queue = []
-visited_urls = []
+visited_urls = dict()
 crawled_count = 0
 #-----------------------------------------------#
 
@@ -67,11 +67,11 @@ def crawler(url):
                 current_url = url + href[1:-1]
                 if current_url not in visited_urls:
                     queue.append(current_url)
-                    visited_urls.append(current_url)
+                    visited_urls[current_url] = 1
             else:
                 if href not in visited_urls:
                     queue.append(href)
-                    visited_urls.append(href)
+                    visited_urls[href] = 1
     except:
         print('') # I get a "string index out of range" sometimes and idk why, so this check is here to help
             
@@ -84,8 +84,12 @@ for line in url_list: # start crawling our SeedUrls first
 for line in queue: # start crawling our queue
     if crawled_count == 3:
         break
-    
+
     crawler(line)
     time.sleep(0.5) # wait 0.5secs for implicit politeness
 
 #print(visited_urls)
+
+#we have an initial link that we crawl first
+#we pull all the links in there and at it to our queue
+#then we crawl the queue and repeat 
