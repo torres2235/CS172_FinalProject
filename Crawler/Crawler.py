@@ -23,6 +23,7 @@ Needed:
 '''
 
 import re
+from sys import setdlopenflags
 import time
 import requests # helps get info from webpages
 from bs4 import BeautifulSoup
@@ -31,6 +32,7 @@ from bs4 import BeautifulSoup
 url_list = []
 queue = []
 visited_urls = []
+crawled_count = 0
 #-----------------------------------------------#
 
 #---------------------Open our SeedUrls.txt file-------------------#
@@ -44,14 +46,17 @@ urls.close()
 
 #-------------------------Stuff-----------------------#
 def crawler(url):
+    global crawled_count
+    crawled_count += 1
     try:
         print(url)
         source_code = requests.get(url)
         plain_text = source_code.text
-        #print(plain_text)
+        # print(plain_text)
         #print(visited_urls)
 
         soup = BeautifulSoup(plain_text, features = "lxml") # be sure 'pip install lxml'
+        print(soup.get_text(separator=' '))
 
         for link in soup.findAll('a'): # 'a' is element for links
             href = link.get('href')
@@ -77,6 +82,9 @@ for line in url_list: # start crawling our SeedUrls first
     time.sleep(0.5) # wait 0.5secs for implicit politeness
 
 for line in queue: # start crawling our queue
+    if crawled_count == 3:
+        break
+    
     crawler(line)
     time.sleep(0.5) # wait 0.5secs for implicit politeness
 
