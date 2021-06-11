@@ -34,4 +34,9 @@ The indexer takes all the documents that the crawler has collected and uses Elas
 ##### Part 3: Extension
 We have implemented a web-based interface using Flutter to display the user's query and the list of results returned by Elasticsearch.
 
+Croogle UI:
 ![image](https://user-images.githubusercontent.com/43655330/121717413-fd16cd80-ca95-11eb-88e7-87fe88f11d26.png)
+
+Croogle UI with a query:
+![image](https://user-images.githubusercontent.com/43655330/121752722-98736700-cac5-11eb-8907-d9dc5064cd98.png)
+
