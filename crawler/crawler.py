@@ -23,15 +23,14 @@ Needed:
 '''
 
 import re
-#from sys import setdlopenflags
 import time
 import requests # helps get info from webpages
-#from doc import Doc
 from bs4 import BeautifulSoup
 import string
 import hashlib
 import sys
 import json
+import os
 
 if len(sys.argv) < 3:
     print("ERROR: Input hop length")
@@ -52,7 +51,7 @@ sim_hashes = dict()
 #-----------------------------------------------#
 
 #---------------------Open our SeedUrls.txt file-------------------#
-with open('../SeedUrls.txt', 'r') as urls:
+with open('../seedurls.txt', 'r') as urls:
     for line in urls:
         line = re.sub('\n',"", line)
         url_list.append(str(line))
@@ -224,26 +223,9 @@ for line in queue: # start crawling our queue
     crawler(line)
     time.sleep(0.5) # wait 0.5secs for implicit politeness
 
-open('testdoc', 'w').close()
-
-test_doc = open('testdoc', 'a')
-
-# for doc in docs:
-#     test_doc.write('<DOC>\n')
-#     test_doc.write(f'<DOCNO> {doc.docno} </DOCNO>\n')
-#     test_doc.write(f'<TEXT>\n')
-#     test_doc.write(f'{doc.text}\n')
-#     test_doc.write('</TEXT>\n')
-#     test_doc.write('</DOC>')
-#     print('DOCNO: ' + doc.docno)
-#     print('\n')
-#     print('TEXT: ' + doc.text)
-
-test_doc.close()
-
 for doc in docs:
     json_object = json.dumps(doc, indent=4)
-    json_file = open(f'{doc["docno"]}.json', 'w')
+    json_file = open(os.path.join('../indexer/docs/', f'{doc["docno"]}.json'), 'w')
     json_file.write(json_object)
     json_file.close()
 #print(visited_urls)
