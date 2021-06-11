@@ -212,7 +212,7 @@ def sim_hash(text):
 
 for line in url_list: # start crawling our SeedUrls first
     crawler(line)
-    hop_queue.append(0)
+    #hop_queue.append(0)
     time.sleep(0.5) # wait 0.5secs for implicit politeness
 
 for line in queue: # start crawling our queue
