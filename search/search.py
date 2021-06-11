@@ -22,7 +22,8 @@ for file in allfiles:
 
 # Search queries
 search = 'http://localhost:9200/test999/_search?pretty'
-search_query = { "query": { "match_all": {}}}
+user_input = input("Enter search: ")
+search_query = { "query": { "match": {"text": user_input}}}
 
 response2 = requests.get(search, headers=headers, json=search_query)
 
