@@ -25,13 +25,13 @@ The crawler keeps a counter on the URL and assigns a document ID to it as well. 
 
 The crawler uses a similarity hash to check for previously visited URLs, and is also able to check if an href link is an extension of the current URL it is on.
 
- needs storage explanation :)
+ ##### needs storing explanation :)
 ###### Part 2: Indexer
 The indexer takes all the documents that the crawler has collected and uses Elastic Search to index. 
 
-needs moar here :)
+##### needs moar here :)
 
 ###### Part 3: Extension
 We have implemented a web-based interface to display the user's query and the list of results returned by Elasticsearch.
 
-include images here :)
+##### include images here :)
