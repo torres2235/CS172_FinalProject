@@ -26,7 +26,6 @@ import re
 from sys import setdlopenflags
 import time
 import requests # helps get info from webpages
-from doc import Doc
 from bs4 import BeautifulSoup
 import string
 import hashlib
@@ -89,7 +88,6 @@ def crawler(url):
             return
 
         full_doc_id = 'RJP' + str(doc_id)
-        # docs.append(Doc(full_doc_id, parsed_html.get_text(separator=' ')))
         docs.append({"docno" : full_doc_id, "url": url, "text": parsed_html.get_text(separator=' ')})
 
         parsed_links = parsed_html.findAll('a')
@@ -195,23 +193,6 @@ for line in queue: # start crawling our queue
 
     crawler(line)
     time.sleep(0.5) # wait 0.5secs for implicit politeness
-
-open('testdoc', 'w').close()
-
-test_doc = open('testdoc', 'a')
-
-# for doc in docs:
-#     test_doc.write('<DOC>\n')
-#     test_doc.write(f'<DOCNO> {doc.docno} </DOCNO>\n')
-#     test_doc.write(f'<TEXT>\n')
-#     test_doc.write(f'{doc.text}\n')
-#     test_doc.write('</TEXT>\n')
-#     test_doc.write('</DOC>')
-#     print('DOCNO: ' + doc.docno)
-#     print('\n')
-#     print('TEXT: ' + doc.text)
-
-test_doc.close()
 
 for doc in docs:
     json_object = json.dumps(doc, indent=4)
