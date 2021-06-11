@@ -94,7 +94,7 @@ def crawler(url):
         parsed_links = parsed_html.findAll('a')
         # robot_url_filter(parsed_links)
         dup_url_eliminator(parsed_links, url)
-        print(queue[-1])
+        
         crawled_count += 1
         doc_id += 1
     except:
@@ -116,10 +116,10 @@ def content_seen(text):
 def dup_url_eliminator(links, url):
     global queue
     
-    current_hop_level = 0
+    current_hop_level = -1
     if len(queue) != 0:
         current_hop_level = queue[url]
-    print(current_hop_level)
+    #print(current_hop_level)
 
     for link in links:
         href = link.get('href')
@@ -129,6 +129,7 @@ def dup_url_eliminator(links, url):
             if current_url not in visited_urls:
                 queue[current_url] = current_hop_level + 1
                 #queue.append(current_url)
+                print(queue)
                 visited_urls[current_url] = 1
 
         #else:
@@ -198,11 +199,12 @@ for line in url_list: # start crawling our SeedUrls first
     crawler(line)
     time.sleep(0.5) # wait 0.5secs for implicit politeness
 
-for line in queue: # start crawling our queue
+for key in queue.keys(): # start crawling our queue
+    #print(key)
     if hop_level == 5:
         break
 
-    crawler(line)
+    crawler(key)
     time.sleep(0.5) # wait 0.5secs for implicit politeness
 
 open('testdoc', 'w').close()
