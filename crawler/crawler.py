@@ -35,7 +35,8 @@ import json
 
 #---------------------Globals-------------------#
 url_list = []
-queue = dict()
+queue = []
+hop_queue = []
 docs = []
 visited_urls = dict()
 crawled_count = 0
@@ -96,11 +97,13 @@ def crawler(url):
         dup_url_eliminator(parsed_links, url)
         
         crawled_count += 1
+        #print(crawled_count)
         doc_id += 1
     except:
         print('') # I get a "string index out of range" sometimes and idk why, so this check is here to help
             
     #print(queue)
+    #print(hop_queue)
 
 def content_seen(text):
     global sim_hash
@@ -114,31 +117,29 @@ def content_seen(text):
         return False
 
 def dup_url_eliminator(links, url):
-    global queue
-    
-    current_hop_level = -1
-    if len(queue) != 0:
-        current_hop_level = queue[url]
-    #print(current_hop_level)
+    global queue, hop_level
+
+    if len(queue) > 0:
+        #print(len(hop_queue))
+        #print(queue.index(url))
+        hop_level = hop_queue[(queue.index(url))]
+        #print(hop_level)
 
     for link in links:
         href = link.get('href')
-
+        print(href)
         if href[0] == '/': # checks to see if the href is an extension of our current url
             current_url = url + href[1:-1]
             if current_url not in visited_urls:
-                queue[current_url] = current_hop_level + 1
-                #queue.append(current_url)
-                print(queue)
+                queue.append(current_url)
+                hop_queue.append(hop_level + 1)
                 visited_urls[current_url] = 1
-
-        #else:
-        #    if href not in visited_urls:
-        #        queue.append(href)
-        #        visited_urls[href] = 1
-
-    hop_level = current_hop_level + 1
-    print(hop_level)
+        else:
+            if href not in visited_urls:
+                queue.append(href)
+                hop_queue.append(hop_level + 1)
+                visited_urls[href] = 1
+    #print(hop_queue[(queue.index(url))])
 
 def robot_url_filter(links):
     #Our target www1.cs.ucr.edu does not have any forbidden links
@@ -197,14 +198,15 @@ def sim_hash(text):
 
 for line in url_list: # start crawling our SeedUrls first
     crawler(line)
+    hop_queue.append(0)
     time.sleep(0.5) # wait 0.5secs for implicit politeness
 
-for key in queue.keys(): # start crawling our queue
-    #print(key)
-    if hop_level == 5:
+for line in queue: # start crawling our queue
+    #print(hop_level)
+    if hop_level == 2:
         break
 
-    crawler(key)
+    crawler(line)
     time.sleep(0.5) # wait 0.5secs for implicit politeness
 
 open('testdoc', 'w').close()
