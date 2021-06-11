@@ -33,6 +33,11 @@ import hashlib
 import sys
 import json
 
+if len(sys.argv) < 3:
+    print("ERROR: Input hop length")
+    sys.exit()
+
+
 #---------------------Globals-------------------#
 url_list = []
 queue = []
@@ -42,6 +47,7 @@ visited_urls = dict()
 crawled_count = 0
 doc_id = 0
 hop_level = 0
+desired_hop_level = 0
 sim_hashes = dict()
 #-----------------------------------------------#
 
@@ -72,6 +78,15 @@ stop_words = []
 for line in stop_words_file:
     stop_words.extend(line.split())
 stop_words_file.close()
+
+#------------------------User Input Parsing--------------------------#
+if len(sys.argv) < 4:
+    if sys.argv[1] == '--hops':
+        try:
+            desired_hop_level = sys.argv[2]
+        except:
+            print("ERROR: Invalid hop length")
+            sys.exit()
 
 #-------------------------Stuff-----------------------#
 def crawler(url):
@@ -203,7 +218,7 @@ for line in url_list: # start crawling our SeedUrls first
 
 for line in queue: # start crawling our queue
     #print(hop_level)
-    if hop_level == 2:
+    if hop_level == int(desired_hop_level):
         break
 
     crawler(line)
