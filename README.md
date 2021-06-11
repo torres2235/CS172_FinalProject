@@ -34,4 +34,4 @@ The indexer takes all the documents that the crawler has collected and uses Elas
 ###### Part 3: Extension
 We have implemented a web-based interface to display the user's query and the list of results returned by Elasticsearch.
 
-##### include images here :)
+![image](https://user-images.githubusercontent.com/43655330/121655400-6e815c80-ca53-11eb-910e-382425782fe6.png)
