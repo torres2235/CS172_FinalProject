@@ -5,8 +5,8 @@
 ## Team member 3 - Joshua Torres
 
 ### Overview: 
+Using URLs to create documents, and utilizing Elasticsearch to index the documents, Croogle is a web crawler for cs.ucr.edu. 
 
-Croogle crawls cs.ucr.edu to collect URLs
 #### In order to run Croogle:
 - Python 3.7
 - `pip install requests`
@@ -18,7 +18,7 @@ Croogle crawls cs.ucr.edu to collect URLs
     * For example, when prompted "Enter search: ", the user can query "CSE" to return results.
 
 
-###### Part 1: Crawler
+##### Part 1: Crawler
 The crawler collects the URLs from seedurls.txt in order to begin crawling. There is a 0.5 second wait time for implicit politeness.
 
 The crawler keeps a counter on the URL and assigns a document ID to it as well. Using the requests library, the crawler can get the text from the website and parse it using BeautifulSoup.
@@ -26,12 +26,12 @@ The crawler keeps a counter on the URL and assigns a document ID to it as well. 
 The crawler uses a similarity hash to check for previously visited URLs, and is also able to check if an href link is an extension of the current URL it is on.
 
  ##### needs storing explanation :)
-###### Part 2: Indexer
+##### Part 2: Indexer
 The indexer takes all the documents that the crawler has collected and uses Elastic Search to index. 
 
 ##### needs moar here :)
 
-###### Part 3: Extension
-We have implemented a web-based interface to display the user's query and the list of results returned by Elasticsearch.
+##### Part 3: Extension
+We have implemented a web-based interface using Flutter to display the user's query and the list of results returned by Elasticsearch.
 
-![image](https://user-images.githubusercontent.com/43655330/121655400-6e815c80-ca53-11eb-910e-382425782fe6.png)
+![image](https://user-images.githubusercontent.com/43655330/121717413-fd16cd80-ca95-11eb-88e7-87fe88f11d26.png)
