@@ -23,29 +23,29 @@ Needed:
 '''
 
 import re
-from sys import setdlopenflags
+#from sys import setdlopenflags
 import time
 import requests # helps get info from webpages
+#from doc import Doc
 from bs4 import BeautifulSoup
 import string
 import hashlib
 import sys
 import json
-import os
 
 #---------------------Globals-------------------#
 url_list = []
-queue = []
+queue = dict()
 docs = []
 visited_urls = dict()
 crawled_count = 0
 doc_id = 0
-
+hop_level = 0
 sim_hashes = dict()
 #-----------------------------------------------#
 
 #---------------------Open our SeedUrls.txt file-------------------#
-with open('../seedurls.txt', 'r') as urls:
+with open('../SeedUrls.txt', 'r') as urls:
     for line in urls:
         line = re.sub('\n',"", line)
         url_list.append(str(line))
@@ -88,12 +88,13 @@ def crawler(url):
             return
 
         full_doc_id = 'RJP' + str(doc_id)
+        # docs.append(Doc(full_doc_id, parsed_html.get_text(separator=' ')))
         docs.append({"docno" : full_doc_id, "url": url, "text": parsed_html.get_text(separator=' ')})
 
         parsed_links = parsed_html.findAll('a')
         # robot_url_filter(parsed_links)
         dup_url_eliminator(parsed_links, url)
-        
+        print(queue[-1])
         crawled_count += 1
         doc_id += 1
     except:
@@ -114,6 +115,11 @@ def content_seen(text):
 
 def dup_url_eliminator(links, url):
     global queue
+    
+    current_hop_level = 0
+    if len(queue) != 0:
+        current_hop_level = queue[url]
+    print(current_hop_level)
 
     for link in links:
         href = link.get('href')
@@ -121,12 +127,17 @@ def dup_url_eliminator(links, url):
         if href[0] == '/': # checks to see if the href is an extension of our current url
             current_url = url + href[1:-1]
             if current_url not in visited_urls:
-                queue.append(current_url)
+                queue[current_url] = current_hop_level + 1
+                #queue.append(current_url)
                 visited_urls[current_url] = 1
-        else:
-            if href not in visited_urls:
-                queue.append(href)
-                visited_urls[href] = 1
+
+        #else:
+        #    if href not in visited_urls:
+        #        queue.append(href)
+        #        visited_urls[href] = 1
+
+    hop_level = current_hop_level + 1
+    print(hop_level)
 
 def robot_url_filter(links):
     #Our target www1.cs.ucr.edu does not have any forbidden links
@@ -188,15 +199,32 @@ for line in url_list: # start crawling our SeedUrls first
     time.sleep(0.5) # wait 0.5secs for implicit politeness
 
 for line in queue: # start crawling our queue
-    if crawled_count == 4:
+    if hop_level == 5:
         break
 
     crawler(line)
     time.sleep(0.5) # wait 0.5secs for implicit politeness
 
+open('testdoc', 'w').close()
+
+test_doc = open('testdoc', 'a')
+
+# for doc in docs:
+#     test_doc.write('<DOC>\n')
+#     test_doc.write(f'<DOCNO> {doc.docno} </DOCNO>\n')
+#     test_doc.write(f'<TEXT>\n')
+#     test_doc.write(f'{doc.text}\n')
+#     test_doc.write('</TEXT>\n')
+#     test_doc.write('</DOC>')
+#     print('DOCNO: ' + doc.docno)
+#     print('\n')
+#     print('TEXT: ' + doc.text)
+
+test_doc.close()
+
 for doc in docs:
     json_object = json.dumps(doc, indent=4)
-    json_file = open(os.path.join('../indexer/docs/', f'{doc["docno"]}.json'), 'w')
+    json_file = open(f'{doc["docno"]}.json', 'w')
     json_file.write(json_object)
     json_file.close()
 #print(visited_urls)
