@@ -32,6 +32,7 @@ import string
 import hashlib
 import sys
 import json
+import os
 
 #---------------------Globals-------------------#
 url_list = []
@@ -45,7 +46,7 @@ sim_hashes = dict()
 #-----------------------------------------------#
 
 #---------------------Open our SeedUrls.txt file-------------------#
-with open('../SeedUrls.txt', 'r') as urls:
+with open('../seedurls.txt', 'r') as urls:
     for line in urls:
         line = re.sub('\n',"", line)
         url_list.append(str(line))
@@ -214,7 +215,7 @@ test_doc.close()
 
 for doc in docs:
     json_object = json.dumps(doc, indent=4)
-    json_file = open(f'{doc["docno"]}.json', 'w')
+    json_file = open(os.path.join('../indexer/docs/', f'{doc["docno"]}.json'), 'w')
     json_file.write(json_object)
     json_file.close()
 #print(visited_urls)
