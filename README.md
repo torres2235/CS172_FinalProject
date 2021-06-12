@@ -43,13 +43,8 @@ We have implemented a web-based interface using Flutter to display the user's qu
 Croogle UI:
 ![image](https://user-images.githubusercontent.com/43655330/121717413-fd16cd80-ca95-11eb-88e7-87fe88f11d26.png)
 
-<<<<<<< HEAD
-Croogle UI with a query:
-![image](https://user-images.githubusercontent.com/43655330/121752722-98736700-cac5-11eb-8907-d9dc5064cd98.png)
+Croogle UI with a query, displaying the first 10 results:
+![image](https://user-images.githubusercontent.com/43655330/121762447-df278800-caea-11eb-9ef5-e35273ced973.png)
 
 ##### Extra Notes:
 * There is a 0.5 second wait time for implicit politeness.
-=======
-Croogle UI with a query, displaying the first 10 results:
-![image](https://user-images.githubusercontent.com/43655330/121759441-88b24d80-cada-11eb-9ec4-009ea33c49bf.png)
->>>>>>> be695b240194080e7d8e7f182019e6b3bdeac1b3
