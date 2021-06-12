@@ -21,7 +21,7 @@ Using URLs to create documents, and utilizing Elasticsearch to index the documen
     * For example, when prompted "Enter search: ", the user can query "CSE" to return results.
 
 ##### Architecture
-## image goes here
+![image](https://user-images.githubusercontent.com/43655330/121763383-7d6a1c80-caf0-11eb-81c1-a2c684fa2f7d.png)
 
 ##### Part 1: Crawler
 The crawler collects a list of initial URLs from seedurls.txt into a queue. It keeps a counter on the URLs and assigns a document ID to it as well. As the crawler finds new URLs, each URL is added to the queue. From the queue, it continues crawling after the seed URLs have been crawled. 
