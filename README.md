@@ -51,3 +51,4 @@ Croogle UI with a query, displaying the first 10 results:
 
 ##### Extra Notes:
 * There is a 0.5 second wait time for implicit politeness.
+* There is a filtering for robots.txt for explicit politeness.
