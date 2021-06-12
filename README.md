@@ -13,7 +13,7 @@ Using URLs to create documents, and utilizing Elasticsearch to index the documen
 - `pip install lxml`
 - `pip install BeautifulSoup4`
 
-1. Run the builder.sh file to run crawler.py and indexer.py, 
+1. Run the builder.sh file to run crawler.py and indexer.py.
     * In order to run with a user-specified number of hops and pages, run: </br>
     `$ python crawler.py --hops 2 --pages 40`
     
@@ -35,7 +35,7 @@ In an attempt to prevent devation from content relevancy, the user can set the d
 An example of the crawler in action:
 ![image](https://user-images.githubusercontent.com/43655330/121762651-337f3780-caec-11eb-8ec1-c2e1ed02b50a.png)
 ##### Part 2: Indexer
-The indexer takes all the JSON files that the crawler has collected and uses Elasticsearch to index. Since the requests library is able to provide commands equivalent to the curl commands used from the terminal, we are able to post the index to the local server.
+The indexer takes all the JSON files that the crawler has collected and uses Elasticsearch to index. Since the requests library is able to provide commands equivalent to the curl commands used in Linux, we are able to post the index to the local server.
 
 ##### Part 3: Extension
 ###### Search
