@@ -220,7 +220,7 @@ for line in url_list: # start crawling our SeedUrls first
 
 for line in queue: # start crawling our queue
     #print(hop_level)
-    if hop_level == int(desired_hop_level) or crawl_count == int(desired_crawl_count):
+    if hop_level == int(desired_hop_level) or crawled_count == int(desired_crawl_count):
         break
 
     crawler(line)
