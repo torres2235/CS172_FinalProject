@@ -28,7 +28,7 @@ The crawler collects a list of initial URLs from seedurls.txt into a queue. It k
 
 Using the requests library, the crawler can get the text from the URL and parse it using BeautifulSoup. The crawler stores the full document ID (each full document ID has a prefix "RJP" and ends in its assigned document ID), the url, and the textual content into an object, which is then added to a list. The crawler then iterates through the list of objects and writes each object to a JSON file.
 
-The crawler uses a similarity hash to check for previously visited URLs, and is also able to check if an href link is an extension of the current URL it is on. If the URL has been previously seen, then the crawler will skip the link.
+The crawler uses SimHash to check for previously visited URLs, and is also able to check if an href link is an extension of the current URL it is on. If the URL has been previously seen, then the crawler will skip the link.
 
 In an attempt to prevent devation from content relevancy, the user can set the depth of the crawler through `--hops` and set the number of pages crawled through `--pages`. Whichever criteria the crawler reaches first is where it will stop at.
 ##### Part 2: Indexer
@@ -43,8 +43,13 @@ We have implemented a web-based interface using Flutter to display the user's qu
 Croogle UI:
 ![image](https://user-images.githubusercontent.com/43655330/121717413-fd16cd80-ca95-11eb-88e7-87fe88f11d26.png)
 
+<<<<<<< HEAD
 Croogle UI with a query:
 ![image](https://user-images.githubusercontent.com/43655330/121752722-98736700-cac5-11eb-8907-d9dc5064cd98.png)
 
 ##### Extra Notes:
 * There is a 0.5 second wait time for implicit politeness.
+=======
+Croogle UI with a query, displaying the first 10 results:
+![image](https://user-images.githubusercontent.com/43655330/121759441-88b24d80-cada-11eb-9ec4-009ea33c49bf.png)
+>>>>>>> be695b240194080e7d8e7f182019e6b3bdeac1b3
