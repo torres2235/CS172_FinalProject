@@ -11,7 +11,7 @@ for dir_path, dir_names, file_names in os.walk("docs"):
 # Index all of our docs
 for file in allfiles:
     with open(file, 'r') as f:
-        index = 'http://localhost:9200/test999/_doc?pretty'
+        index = 'http://localhost:9200/croogler_index/_doc?pretty'
 
         doc = json.load(f)
 

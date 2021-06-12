@@ -11,15 +11,22 @@ Using URLs to create documents, and utilizing Elasticsearch to index the documen
 
 #### In order to run Croogle:
 - Python 3.7
+- Flutter https://flutter.dev/docs/get-started/install
+- Dart
+- Android Studio/VSCode (To launch Flutter app)
+- Flutter & Dart Plugins for chosen IDE (Android Studio/VS Code)
+- ElasticSearch local https://www.elastic.co/downloads/elasticsearch
 - `pip install requests`
 - `pip install lxml`
 - `pip install BeautifulSoup4`
 
-1. Run the builder.sh file to run crawler.py and indexer.py.
+1. Run the builder.sh file to run crawler.py and indexer.py `$ source ./builder.sh`.
     * In order to run with a user-specified number of hops and pages, run: </br>
     `$ python crawler.py --hops 2 --pages 40`
+
+2. Run the indexer.sh file to run the indexer on its own `$ source ./indexer.sh` (can skip if ran 1.).
     
-2. Running runner.sh will allow the user to search through the index.
+3. Running runner.sh will allow the user to search through the index `$ source ./runner.sh`.
     * For example, when prompted "Enter search: ", the user can query "CSE" to return results.
 
 ##### Architecture
@@ -62,5 +69,5 @@ We have implemented a web-based interface using Flutter to display the user's qu
 ##### Extra Notes:
 * There is a 0.5 second wait time for implicit politeness.
 * There is a filtering for robots.txt for explicit politeness.
-* We used this stack overflow post to assist in learning how to connect the front end to the back end:
+* We used this stack overflow post to assist in learning how to overcome cors policy issue when connecting our front end to the elasticsearch backend:
    * https://stackoverflow.com/questions/37384380/cross-origin-request-blocked-elasticsearch.
