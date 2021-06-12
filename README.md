@@ -1,8 +1,10 @@
 # CS172 - Final Project
 
-## Team member 1 - Renzo Olivares
-## Team member 2 - Phyllis Chen
-## Team member 3 - Joshua Torres
+| Team Member      | Name | Contribution     |
+| :---        |    :----:   |          ---: |
+| 1      | Renzo Olivares        | 42%   |
+| 2   | Phyllis Chen        | 29%      |
+| 3   | Joshua Torres        | 29%      |
 
 #### Overview: 
 Using URLs to create documents, and utilizing Elasticsearch to index the documents, Croogle is a web crawler for cs.ucr.edu. 
@@ -22,6 +24,9 @@ Using URLs to create documents, and utilizing Elasticsearch to index the documen
 
 ##### Architecture
 ![image](https://user-images.githubusercontent.com/43655330/121763383-7d6a1c80-caf0-11eb-81c1-a2c684fa2f7d.png)
+
+###### Limitations:
+* While Croogle is capable of crawling, it does run exponentially slower after designating a number of hops greater than 3.
 
 ##### Part 1: Crawler
 The crawler collects a list of initial URLs from seedurls.txt into a queue. It keeps a counter on the URLs and assigns a document ID to it as well. As the crawler finds new URLs, each URL is added to the queue. From the queue, it continues crawling after the seed URLs have been crawled. 
