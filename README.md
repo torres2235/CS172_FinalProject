@@ -37,5 +37,5 @@ We have implemented a web-based interface using Flutter to display the user's qu
 Croogle UI:
 ![image](https://user-images.githubusercontent.com/43655330/121717413-fd16cd80-ca95-11eb-88e7-87fe88f11d26.png)
 
-Croogle UI with a query:
+Croogle UI with a query, displaying the first 10 results:
 ![image](https://user-images.githubusercontent.com/43655330/121759441-88b24d80-cada-11eb-9ec4-009ea33c49bf.png)
