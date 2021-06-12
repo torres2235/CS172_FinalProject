@@ -110,7 +110,7 @@ def crawler(url):
         docs.append({"docno" : full_doc_id, "url": url, "text": parsed_html.get_text(separator=' ')})
 
         parsed_links = parsed_html.findAll('a')
-        # robot_url_filter(parsed_links)
+        robot_url_filter(url)
         dup_url_eliminator(parsed_links, url)
         
         crawled_count += 1
@@ -158,8 +158,22 @@ def dup_url_eliminator(links, url):
                 visited_urls[href] = 1
     #print(hop_queue[(queue.index(url))])
 
-def robot_url_filter(links):
-    #Our target www1.cs.ucr.edu does not have any forbidden links
+def robot_url_filter(url):
+    if url[-1] == '/':
+        #print(url[-1])
+        url = url.rstrip(url[-1])
+        #print(url)
+
+    response = requests.get(url + "/robots.txt")
+    test = response.text
+    for line in test.split("\n"):
+        if "Disallow: " in line:
+            #print(line)
+            #print(line[10])
+            new_line = str(url + line[10:])
+            #print(new_line)
+            visited_urls[new_line] = 1 # added the disallowed page into our visited ones so we dont go there
+    #print(test)
     return
 
 def sim_hash(text):
