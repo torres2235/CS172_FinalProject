@@ -32,8 +32,9 @@ import sys
 import json
 import os
 
-if len(sys.argv) < 3:
-    print("ERROR: Input hop length")
+if len(sys.argv) != 5:
+    print("ERROR: Input hop length and pages")
+    print("Use format python crawler.py --hops <desired_hop_level> --pages <desired_page#_crawled")
     sys.exit()
 
 
@@ -47,6 +48,7 @@ crawled_count = 0
 doc_id = 0
 hop_level = 0
 desired_hop_level = 0
+desired_crawl_count = 0
 sim_hashes = dict()
 #-----------------------------------------------#
 
@@ -79,12 +81,13 @@ for line in stop_words_file:
 stop_words_file.close()
 
 #------------------------User Input Parsing--------------------------#
-if len(sys.argv) < 4:
-    if sys.argv[1] == '--hops':
+if len(sys.argv) == 5:
+    if sys.argv[1] == '--hops' and sys.argv[3] == '--pages':
         try:
             desired_hop_level = sys.argv[2]
+            desired_crawl_count = sys.argv[4]
         except:
-            print("ERROR: Invalid hop length")
+            print("ERROR: Invalid hop length or crawl count")
             sys.exit()
 
 #-------------------------Stuff-----------------------#
@@ -217,7 +220,7 @@ for line in url_list: # start crawling our SeedUrls first
 
 for line in queue: # start crawling our queue
     #print(hop_level)
-    if hop_level == int(desired_hop_level):
+    if hop_level == int(desired_hop_level) or crawl_count == int(desired_crawl_count):
         break
 
     crawler(line)
