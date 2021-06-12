@@ -144,7 +144,7 @@ def dup_url_eliminator(links, url):
 
     for link in links:
         href = link.get('href')
-        print(href)
+        #print(href)
         if href[0] == '/': # checks to see if the href is an extension of our current url
             current_url = url + href[1:-1]
             if current_url not in visited_urls:
