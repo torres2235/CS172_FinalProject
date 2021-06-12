@@ -38,7 +38,8 @@ The crawler uses SimHash to check for previously visited URLs, and is also able 
 In an attempt to prevent devation from content relevancy, the user can set the depth of the crawler through `--hops` and set the number of pages crawled through `--pages`. Whichever criteria the crawler reaches first is where it will stop at.
 
 An example of the crawler in action:
-![image](https://user-images.githubusercontent.com/43655330/121762651-337f3780-caec-11eb-8ec1-c2e1ed02b50a.png)
+![image](https://user-images.githubusercontent.com/43655330/121763710-0aae7080-caf3-11eb-8e0d-a517d2600e9b.png)
+
 ##### Part 2: Indexer
 The indexer takes all the JSON files that the crawler has collected and uses Elasticsearch to index. Since the requests library is able to provide commands equivalent to the curl commands used in Linux, we are able to post the index to the local server.
 
