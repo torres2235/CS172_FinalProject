@@ -38,5 +38,4 @@ Croogle UI:
 ![image](https://user-images.githubusercontent.com/43655330/121717413-fd16cd80-ca95-11eb-88e7-87fe88f11d26.png)
 
 Croogle UI with a query:
-![image](https://user-images.githubusercontent.com/43655330/121752722-98736700-cac5-11eb-8907-d9dc5064cd98.png)
-
+![image](https://user-images.githubusercontent.com/43655330/121759441-88b24d80-cada-11eb-9ec4-009ea33c49bf.png)
