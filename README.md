@@ -48,6 +48,7 @@ The indexer takes all the JSON files that the crawler has collected and uses Ela
 The user is prompted to enter a query. Using the requests library, Elasticsearch will return the top 10 results from the user's query.
 ###### UI
 We have implemented a web-based interface using Flutter to display the user's query and the list of results returned by Elasticsearch.
+
 | Croogle UI:    |
 | :---        |   
 | ![image](https://user-images.githubusercontent.com/43655330/121717413-fd16cd80-ca95-11eb-88e7-87fe88f11d26.png)|
@@ -61,3 +62,5 @@ We have implemented a web-based interface using Flutter to display the user's qu
 ##### Extra Notes:
 * There is a 0.5 second wait time for implicit politeness.
 * There is a filtering for robots.txt for explicit politeness.
+* We used this stack overflow post to assist in learning how to connect the front end to the back end:
+   * https://stackoverflow.com/questions/37384380/cross-origin-request-blocked-elasticsearch.
