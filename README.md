@@ -14,7 +14,7 @@ Using URLs to create documents, and utilizing Elasticsearch to index the documen
 - `pip install BeautifulSoup4`
 
 1. Run the builder.sh file to run crawler.py and indexer.py, 
-    * In order to run with a user-specified number of hops and pages, run:
+    * In order to run with a user-specified number of hops and pages, run: </br>
     `$ python crawler.py --hops 2 --pages 40`
     
 2. Running runner.sh will allow the user to search through the index.
