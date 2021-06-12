@@ -67,6 +67,7 @@ We have implemented a web-based interface using Flutter to display the user's qu
 
 
 ##### Extra Notes:
+* If bash scripts do not work try editing the python version argument `python indexer.py` to `python3.9 indexer.py` for example, or the version you are currently on.
 * There is a 0.5 second wait time for implicit politeness.
 * There is a filtering for robots.txt for explicit politeness.
 * We used this stack overflow post to assist in learning how to overcome cors policy issue when connecting our front end to the elasticsearch backend:
