@@ -47,10 +47,9 @@ The indexer takes all the JSON files that the crawler has collected and uses Ela
 The user is prompted to enter a query. Using the requests library, Elasticsearch will return the top 10 results from the user's query.
 ###### UI
 We have implemented a web-based interface using Flutter to display the user's query and the list of results returned by Elasticsearch.
-
-Croogle UI:
-![image](https://user-images.githubusercontent.com/43655330/121717413-fd16cd80-ca95-11eb-88e7-87fe88f11d26.png)
-
+| Croogle UI:    |
+| :---        |   
+| ![image](https://user-images.githubusercontent.com/43655330/121717413-fd16cd80-ca95-11eb-88e7-87fe88f11d26.png)|
 Croogle UI with a query, displaying the first 10 results:
 ![image](https://user-images.githubusercontent.com/43655330/121762447-df278800-caea-11eb-9ef5-e35273ced973.png)
 
