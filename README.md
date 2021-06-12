@@ -20,14 +20,18 @@ Using URLs to create documents, and utilizing Elasticsearch to index the documen
 - `pip install lxml`
 - `pip install BeautifulSoup4`
 
-1. Run the builder.sh file to run crawler.py and indexer.py `$ source ./builder.sh`.
+1. Make sure to start elasticsearch service before doing anything.
+
+2. Run the builder.sh file to run crawler.py and indexer.py `$ source ./builder.sh`.
     * In order to run with a user-specified number of hops and pages, run: </br>
     `$ python crawler.py --hops 2 --pages 40`
 
-2. Run the indexer.sh file to run the indexer on its own `$ source ./indexer.sh` (can skip if ran 1.).
+3. Run the indexer.sh file to run the indexer on its own `$ source ./indexer.sh` (can skip if ran 1.).
     
-3. Running runner.sh will allow the user to search through the index `$ source ./runner.sh`.
+4. Running runner.sh will allow the user to search through the index `$ source ./runner.sh`.
     * For example, when prompted "Enter search: ", the user can query "CSE" to return results.
+
+5. To run front-end import flutter_front_end/bubbles as a project into Android Studio and run in there, must have Flutter installed.
 
 ##### Architecture
 ![image](https://user-images.githubusercontent.com/43655330/121763383-7d6a1c80-caf0-11eb-81c1-a2c684fa2f7d.png)
