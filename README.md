@@ -31,6 +31,10 @@ Using the requests library, the crawler can get the text from the URL and parse 
 The crawler uses SimHash to check for previously visited URLs, and is also able to check if an href link is an extension of the current URL it is on. If the URL has been previously seen, then the crawler will skip the link.
 
 In an attempt to prevent devation from content relevancy, the user can set the depth of the crawler through `--hops` and set the number of pages crawled through `--pages`. Whichever criteria the crawler reaches first is where it will stop at.
+
+An example of a the crawler in action:
+![image](https://user-images.githubusercontent.com/43655330/121762629-0b8fd400-caec-11eb-809b-233d512d6fd0.png)
+
 ##### Part 2: Indexer
 The indexer takes all the JSON files that the crawler has collected and uses Elasticsearch to index. Since the requests library is able to provide commands equivalent to the curl commands used from the terminal, we are able to post the index to the local server.
 
